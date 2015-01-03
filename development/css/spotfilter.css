@@ -1,0 +1,111 @@
+#page-content-wrapper{
+	font-family: "Open Sans";
+	font-size: 12px;
+}
+
+.filter-view table{
+	width: 100%;
+}
+
+.filter-view th{
+	font-size: 12px;
+	margin: 0;
+	padding: 3px 3px !important;
+}
+
+.filter-view td{
+	margin: 0;
+	padding: 3px 3px !important;
+}
+
+.filter-view .column-date{
+	max-width: 80px;
+}
+
+.filter-view .column-callsign{
+	font-weight: 600;
+}
+
+.filter-view .column-callsign .operator{
+	font-size: 10px;
+	font-weight: 400;
+	white-space: nowrap;
+	margin-left: 5px;
+}
+
+.filter-view .column-summit{
+	padding-right: 0px;
+}
+
+.filter-view .column-points{
+	padding-left: 3px;
+}
+
+.filter-view .column-frequency{
+	text-align: right;
+}
+
+.filter-view a{
+	font-style: italic;
+}
+
+.filter-view a:hover{
+	color: #428bca;
+}
+
+.filter-view .red{ color: red; }
+.filter-view .orange{ color: #ffbb00; }
+.filter-view .green{ color: #0ec30e; }
+.filter-view .blue{ color: #5b90f8; }
+
+
+.filter-view tr.hover-blue { background: rgba(77,121,243, 0.40) }
+.filter-view tr.hover-light-blue{ background: rgba(77,121,243, 0.15) }
+
+.filter-view .hover-red { background: rgba(255, 0, 0, 0.08) }
+.filter-view .hover-green { background: rgba(0,255,0,0.08);}
+
+
+.filter-view .tooltip-inner {
+    max-width: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    /* If max-width does not work, try using width instead */
+    width: 350px; 
+}
+
+.filter-view .tooltip-inner div{
+	margin: 2px 0px;
+}
+
+.filter-view .tooltip-inner .view-split{
+	border-top: 1px dashed white;
+	margin-top: 5px;
+	padding-top: 5px;
+}
+
+@media(min-width: 550px){
+	.filter-view{
+		font-size: 14px;
+	}
+
+	.filter-view th{
+		padding: 3px 5px !important;
+	}
+
+	.filter-view td{
+		padding: 3px 7px !important;
+	}
+}
+
+@media(min-width:768px){
+
+	.filter-view{
+		font-size: 12px;
+	}
+
+	.filter-view table{
+		width: auto;
+	}
+
+}

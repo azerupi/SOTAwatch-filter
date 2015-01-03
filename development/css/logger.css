@@ -1,0 +1,86 @@
+.logger-view table{
+    margin-top: 25px;
+    width: auto;
+}
+
+.logger-view .cel{
+    padding: 3px 5px;
+    border: none;
+}
+
+.logger-view .cel.time{
+    padding-left: 0px;
+    padding-right: 2px; 
+} 
+
+.logger-view .cel.date{
+    padding-left: 0px;
+    padding-right: 5px;
+}
+
+.logger-view .cel.callsign{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.logger-view .cel.mode{
+    padding-right: 30px;
+}
+
+.logger-view .cel.icon{
+    padding-left: 7px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.logger-view .red{
+    color: red;
+}
+
+.logger-view #add div{
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
+.logger-view .inline{
+    display: inline-block;
+}
+
+.logger-view #my-callsign{
+    width: 150px;
+}
+
+.logger-view #log-date{
+    width: 80px;
+}
+
+.logger-view #log-time{
+    width: 50px;
+}
+
+.logger-view #log-callsign{
+    width: 100px;
+}
+
+.logger-view #log-summit{
+    width: 100px;
+}
+
+.logger-view #log-band{
+    width: 50px;
+}
+
+.logger-view #log-mode{
+    width: 50px;
+}
+
+.logger-view button{
+    padding: 0 4px;
+    height: 26px;
+    position: relative;
+    bottom: 2px;
+}
+
+
+
+

@@ -1,0 +1,255 @@
+<div class="settings-view">
+
+	<h1>Settings</h1>
+
+
+	<div class="row">
+		<form>
+			
+			<h2 class="col-xs-12">Filter <button class="btn btn-primary btn-xs toggle-button" data-ng-click="spotfilter.reset()">Reset</button></h2>
+
+			<!-- INCLUDE EXCLUDE INPUT BOXES -->
+			<div class="col-xs-12 float-box">
+				<div class="pull-left">
+					<h4>Callsign</h4>
+				    <div class="form-group">
+				    	<label for="callsignInclude" class="control-label">Include</label>
+				        <input type="text" class="form-control" id="callsignInclude" data-ng-model="spotfilter.callsign.include" ng-change="spotfilter.save()" data-check-empty=".*">
+				    </div>
+				    <div class="form-group">
+				        <label for="callsignExclude" class="control-label">Exclude</label>
+				        <input type="text" class="form-control" id="callsignExclude" data-ng-model="spotfilter.callsign.exclude" ng-change="spotfilter.save()">
+				    </div>
+				</div>
+
+				<div class="pull-left">
+				    <h4>Summit</h4>
+				    <div class="form-group">
+				    	<label for="summitInclude" class="control-label">Include</label>
+				        <input type="text" class="form-control" id="summitInclude" data-ng-model="spotfilter.summit.include" ng-change="spotfilter.save()" data-check-empty=".*">
+				    </div>
+				    <div class="form-group">
+				        <label for="summitExclude" class="control-label">Exclude</label>
+				        <input type="text" class="form-control" id="summitExclude" data-ng-model="spotfilter.summit.exclude" ng-change="spotfilter.save()">
+				    </div>
+				</div>
+
+			    <div class="pull-left">
+			    	<h4>Comments</h4>
+				    <div class="form-group">
+				    	<label for="commentInclude" class="control-label">Include</label>
+				        <input type="text" class="form-control" id="commentInclude" data-ng-model="spotfilter.comment.include" ng-change="spotfilter.save()" data-check-empty=".*">
+				    </div>
+				    <div class="form-group">
+				        <label for="commentExclude" class="control-label">Exclude</label>
+				        <input type="text" class="form-control" id="commentExclude" data-ng-model="spotfilter.comment.exclude" ng-change="spotfilter.save()">
+				    </div>
+				</div>
+
+			</div>
+
+
+			<!-- BAND AND MODE CHECKBOXES -->
+
+			<div class="col-xs-12 float-box big-spacing">
+
+				<div class="pull-left">
+					<h4>Band <button class="btn btn-primary btn-xs toggle-button" data-ng-click="spotfilter.toggleBand()">Toggle</button></h4>
+				    
+			        <div class="band-checkboxes">
+					    <div class="col-xs-4">
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band160" data-ng-model="spotfilter.band[160]" ng-change="spotfilter.save()">160m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band80" data-ng-model="spotfilter.band[80]" ng-change="spotfilter.save()">80m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band60" data-ng-model="spotfilter.band[60]" ng-change="spotfilter.save()">60m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band40" data-ng-model="spotfilter.band[40]" ng-change="spotfilter.save()">40m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band30" data-ng-model="spotfilter.band[30]" ng-change="spotfilter.save()">30m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band20" data-ng-model="spotfilter.band[20]" ng-change="spotfilter.save()">20m
+					        </label>
+					    </div>
+
+					    <div class="col-xs-4">
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band17" data-ng-model="spotfilter.band[17]" ng-change="spotfilter.save()">17m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band15" data-ng-model="spotfilter.band[15]" ng-change="spotfilter.save()">15m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band12" data-ng-model="spotfilter.band[12]" ng-change="spotfilter.save()">12m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band10" data-ng-model="spotfilter.band[10]" ng-change="spotfilter.save()">10m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band6" data-ng-model="spotfilter.band[6]" ng-change="spotfilter.save()">6m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band4" data-ng-model="spotfilter.band[4]" ng-change="spotfilter.save()">4m
+					        </label>
+					    </div>
+
+					    <div class="col-xs-4">
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band2" data-ng-model="spotfilter.band[2]" ng-change="spotfilter.save()">2m
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band70" data-ng-model="spotfilter.band[70]" ng-change="spotfilter.save()">70cm
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band23" data-ng-model="spotfilter.band[23]" ng-change="spotfilter.save()">23cm
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="Band13" data-ng-model="spotfilter.band[13]" ng-change="spotfilter.save()">13cm
+					        </label>
+					        <label class="checkbox">
+					            <input type="checkbox" id="BandOthers" data-ng-model="spotfilter.band.others" ng-change="spotfilter.save()">Others
+					        </label>
+					    </div>
+					</div>
+			   	</div>
+
+			   	<div class="pull-left">
+					<h4>Mode</h4>
+				    
+				        <div class="band-checkboxes">
+						    <div class="col-xs-12">
+						        <label class="checkbox">
+						            <input type="checkbox" id="ModeCW" data-ng-model="spotfilter.mode.cw" ng-change="spotfilter.save()">CW
+						        </label>
+						        <label class="checkbox">
+						            <input type="checkbox" id="ModeSSB" data-ng-model="spotfilter.mode.ssb" ng-change="spotfilter.save()">SSB
+						        </label>
+						        <label class="checkbox">
+						            <input type="checkbox" id="ModeFM" data-ng-model="spotfilter.mode.fm" ng-change="spotfilter.save()">FM
+						        </label>
+						        <label class="checkbox">
+						            <input type="checkbox" id="ModeOthers" data-ng-model="spotfilter.mode.others" ng-change="spotfilter.save()">Others
+						        </label>
+						    </div>
+						</div>
+				   
+				</div>
+
+				<div class="pull-left">
+					<h4>Points</h4>
+				    
+					show summits that are worth<br>
+					more than <input class="form-control" type="number" data-ng-model="spotfilter.points" data-check-in-range data-settings="spotfilter" data-md-min="0" data-md-max="9" data-save="spotfilter.save()"> {{ spotfilter.points | pluralize:'point':false }}
+				   
+				</div>
+
+			</div>
+			
+
+			<div class=" col-sm-6">
+				
+				<div class="float-box">
+					<div class="pull-left">
+
+					<br>
+
+						<label class="checkbox long-text-checkbox">
+				            <input type="checkbox" id="hide-log" data-ng-model="spotfilter.hideLog" ng-change="spotfilter.save()">Exclude spots from callsign-summit pairs that <strong>are logged</strong>
+				        </label>
+
+				        
+						
+						<label class="checkbox long-text-checkbox">
+				            <input type="checkbox" id="hide" data-ng-model="spotfilter.hideMatched" ng-change="spotfilter.save()">Hide spots that <strong>do not match</strong> the filter settings
+				        </label>
+
+				        <div class="inset">
+
+					        <label class="checkbox long-text-checkbox">
+					            <input type="checkbox" id="highlight-rejected" data-ng-model="spotfilter.highlightRejected" ng-change="spotfilter.save()" ng-disabled="spotfilter.hideMatched">Highlight spots that <strong>do not match</strong> the filter settings
+					        </label>
+					        
+					        <label class="checkbox long-text-checkbox">
+					            <input type="checkbox" id="highlight-matched" data-ng-model="spotfilter.highlightMatched" ng-change="spotfilter.save()" ng-disabled="spotfilter.hideMatched">Highlight spots that <strong>do match</strong> the filter settings
+					        </label>
+						</div>
+						
+
+					</div>
+				
+				</div>
+			</div>
+
+
+		</form>
+
+	</div>
+
+
+
+
+	<div class="row">
+		
+		<h2 class="col-xs-12">Audio Notifications</h2>
+
+		<form>
+			<div class=" col-sm-6">
+			
+				<div class="pull-left" ng-controller="AudioSettingsController">
+					<div class="col-xs-12">
+						<label class="checkbox">
+				            <input type="checkbox" id="mute" data-ng-model="unmute">Enable audio notifications
+				        </label>
+				    </div>
+				    <br><br>
+					<p>Select the sound for new spots:</p>
+					
+					<select class="form-control inline-block" data-ng-model="soundNotification.selectedSoundSpots" data-ng-options="sound.name for sound in soundNotification.sounds" data-ng-change="soundNotification.save()"></select> <br><br>
+					<a class="text-right col-xs-12" data-ng-click="soundNotification.testSpots()">Test Audio <span class="glyphicon glyphicon-play-circle"></span></a>
+
+				</div>
+			
+			</div>
+
+		</form>
+
+	</div>
+
+	<div class="row">
+		
+		<h2 class="col-xs-12">Logger</h2>
+
+		<form>
+			<div class=" col-sm-6">
+
+	            <div class="form-group">
+	                <label>My Callsign:</label><input type="text" class="form-control" id="my-callsign" data-ng-model="logger.myCallsign" data-ng-change="logger.save()">
+	            </div>
+
+	            <div class="form-group">
+	            	<label>My Summit:</label><input type="text" class="form-control" id="my-summit" data-ng-model="logger.mySummit" data-ng-change="logger.save()">
+	            </div>
+	            
+	        </div>
+        </form>
+
+	</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+

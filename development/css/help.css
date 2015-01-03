@@ -1,0 +1,45 @@
+.help-view{
+    max-width: 850px;
+}
+
+.help-view .FAQ-list{
+    margin: 50px 0px;
+}
+
+.help-view ul, ol{
+    padding: 20px 0px 5px 20px;
+    margin: 0;
+}
+
+.help-view h1{
+    margin-bottom: 40px;
+}
+
+.help-view .question{
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+.help-view .red{ color: red; }
+.help-view .orange{ color: #ffbb00; }
+.help-view .green{ color: #0ec30e; }
+.help-view .blue{ color: #5b90f8; }
+
+.help-view td{
+    padding: 5px 10px 5px 0px;
+}
+
+.warning{
+    position: relative;
+    border-left: 1px solid #E7E7E7;
+    padding-left: 20px;
+    margin-left: 40px; 
+}
+
+.warning i{
+    font-size: 24px;
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    margin-top: -12px;
+}

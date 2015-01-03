@@ -1,0 +1,92 @@
+.settings-view form{
+	font-size: 13px;
+	margin-top: 0px;
+}
+
+.settings-view form .float-box{
+	margin-bottom: 15px;
+}
+
+.settings-view form .float-box > .pull-left{
+	margin-right: 30px;
+	margin-bottom: 15px;
+}
+
+.settings-view form .big-spacing > .pull-left{
+	margin-right: 60px;
+}
+
+.settings-view form .form-group{
+	float: left;
+	margin-right: 20px;
+}
+
+.settings-view  form label{
+	font-weight: 500;
+}
+
+form input[type="text"]{
+	text-align: center;
+	font-size: 13px;
+	padding: 0;
+	margin: 0;
+	height: 26px;
+}
+
+form input[type="number"]{
+	text-align: center;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	height: 20px;
+	width: 40px;
+	display: inline-block;
+}
+
+form select{
+	font-size: 13px;
+	padding: 0;
+	margin: 0;
+	height: 26px;
+}
+
+.settings-view form h4{
+	margin-top: 5px; 
+}
+
+.settings-view .band-checkboxes{
+	max-width: 200px;
+}
+
+.settings-view form .checkbox{
+	margin: 0;
+	padding: 0;
+	margin-left: 6px;
+	min-height: 15px;
+}
+
+.settings-view form .long-text-checkbox{
+	margin: 5px 20px;
+}
+
+.settings-view .toggle-button{
+	font-size: 11px;
+	height: 24px;
+	border: 2px solid white;
+	border-radius: 15px;
+	padding: 0px 7px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.settings-view .inline-block{
+	display: inline-block;
+}
+
+.settings-view a:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.settings-view .inset{
+	margin-left: 20px;
+}
