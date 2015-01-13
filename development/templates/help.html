@@ -77,23 +77,27 @@
     <div class="question">
         <h4 id="use-filters">How to filter spots ?</h4>
         <p>
-            You can find the settings for the filters by clicking the gear icon in the sidebar after "Spot Filter".
+            To filter spots, head over to the settings tab. Under the filter settings you have all the options to filter out spots based on multiple criteria.
         </p>
+
+        <p>
+            To filter out specific callsigns or summits we use <strong><a href="http://www.regular-expressions.info/" target="_blank">regular expressions</a></strong>. If you fill in the "include" textbox only spots that match the regular expression inside the textbox will be showed. If you fill in the "exclude" textbox all the matching spots will be hidden. Of course you can use the two together for maximum flexibility.
+        </p>
+
+        <h5><strong>Examples</strong></h5>
+        <table>
+            <tr><td>Test</td><td>Test</td></tr>
+            <tr><td>Test</td><td>Test</td></tr>
+        </table>
         
-        <p>
-            In the Filter settings you can indicate rules to filter on Callsign and Summit. 
-            Those rules, called <a href="http://www.regular-expressions.info/" target="_blank">Regular Expressions</a>, are not the easiest to master, 
-            but used correctly they offer an infinite amount of flexibility. 
-            If you don't know how to use regular expressions I can only encourage 
-            you to <a href="http://lmgtfy.com/?q=Regular+Expressions" target="_blank" class="blue">Google it</a> and learn.
-        </p>
-        <p>
-            On <a href="http://regex101.com/" target="_blank">Regex101</a> you can check if your regular expression matches what you wanted it to match. Very useful!
-        </p>
+        <br>
         
         <p class="warning">
             <i class="fa fa-info-circle blue"></i>
             On SOTAwatch filter, the case sensitivity of the Regular Expressions has been turned OFF: "SsB" is therefore the same as "ssB" or "SSB"
+        </p>
+        <p> 
+            And finally, I want to share a useful ressource: <a href="http://regex101.com/" target="_blank">Regex101</a> with this tool you can check if your regular expression matches what you wanted it to match. Very useful!
         </p>
     </div>
 
