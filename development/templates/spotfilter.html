@@ -44,6 +44,7 @@
 							<span data-ng-show="spot.points" data-ng-class="{ red: spot.points > 7, orange: spot.points > 4 && spot.points < 7, green: spot.points < 5 }">
 								({{ spot.points }})
 							</span>
+							<span data-ng-show="!spot.points"> (??) </span>
 						</td>
 						<td class="column-frequency">{{ spot.frequencyString }}</td>
 						<td class="column-mode">{{ spot.mode }}</td>
