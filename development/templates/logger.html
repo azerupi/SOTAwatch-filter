@@ -69,7 +69,7 @@
 
             </table>
             <br><br>
-            <button data-ng-show="log.loglist.length > 0" class="btn btn-primary" data-ng-click="log.export()">Download log as SOTAwatchfilter-log-{{Date.now() | date:'yyyyMMdd':UTC}}.csv</button>
+            <button data-ng-show="log.loglist.length > 0" class="btn btn-primary" data-ng-click="log.export()">Download log as SOTAwatchfilter-log-{{Date.now() | date:'yyyyMMdd' : 'UTC'}}-{{Date.now() | date:'HHmm':'UTC'}}.csv</button>
 
             <button data-ng-show="log.loglist.length > 0" class="btn btn-primary" data-ng-click="log.clear()">Clear log</button>
 

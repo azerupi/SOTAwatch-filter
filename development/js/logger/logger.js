@@ -181,7 +181,7 @@ app
             }
 
             var csv = new Blob([csvString], {type: "text/plain;charset=utf-8"});
-            saveAs(csv, "SOTAwatchfilter-log-"+$filter('date')(new Date(), "yyyyMMdd", "UTC")+".csv");
+            saveAs(csv, "SOTAwatchfilter-log-"+$filter('date')(new Date(), "yyyyMMdd", "UTC")+"-"+$filter('date')(new Date(), "HHmm", "UTC")+".csv");
         };
 
         log.isInLog = function(callsign, summit){
