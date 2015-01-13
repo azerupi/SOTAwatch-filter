@@ -19,6 +19,7 @@
 						<th class="column-summit" colspan="2">Summit</th>
 						<th class="column-frequency">Frequency</th>
 						<th class="column-mode">Mode</th>
+						<th>Log</th>
 					</tr>
 				</thead>
 
@@ -40,14 +41,16 @@
 						<td class="column-date">{{ spot.date }}</td>
 						<td class="column-callsign">{{ spot.callsign }}<span class="operator hidden-xs" data-ng-hide="spot.operator === 'Not registered'">( {{ spot.operator }} )</span></td>
 						<td class="column-summit"><a href="http://sotawatch.org/summits.php?summit={{ spot.summitReference }}" target="_blank">{{ spot.summitReference }}</a></td>
-						<td class="column-points" data-ng-click="logger.add(spot.callsign, spot.summitReference, spot.frequencyString, spot.mode); alert.addAlert('Spot added to the log','info',2000)">
-							<span data-ng-show="spot.points" data-ng-class="{ red: spot.points > 7, orange: spot.points > 4 && spot.points < 7, green: spot.points < 5 }">
+						<td class="column-points" >
+							<span  class="points" data-ng-show="spot.points" data-ng-class="{ red: spot.points > 7, orange: spot.points > 4 && spot.points < 7, green: spot.points < 5 }">
 								({{ spot.points }})
 							</span>
-							<span data-ng-show="!spot.points"> (??) </span>
 						</td>
 						<td class="column-frequency">{{ spot.frequencyString }}</td>
 						<td class="column-mode">{{ spot.mode }}</td>
+						<td data-ng-click="logger.add(spot.callsign, spot.summitReference, spot.frequencyString, spot.mode); alert.addAlert('Spot added to the log','info',2000)" title="Click to log !">
+							<span class="glyphicon glyphicon-edit"></span>
+						</td>
 					</tr>
 				</tbody>
 
