@@ -4459,7 +4459,7 @@ app
 
 
 
-    .filter("numberOfBadges", ["$log", "settingsService", "SoundNotification", "SpotsService", function($log, settingsService, SoundNotification, SpotsService){
+    .filter("numberOfBadges", ["$log", "$filter", "settingsService", "SoundNotification", "SpotsService", function($log, $filter, settingsService, SoundNotification, SpotsService){
 
         return function(spots){
 
