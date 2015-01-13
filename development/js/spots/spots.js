@@ -26,8 +26,6 @@ app
 		spots.numberOfNewSpots = 0;
 		spots.newSpots = false;
 
-		soundNotification = SoundNotification;
-
 		alert = alertService;
 		// FETCH THE SPOTS VIA THE PROXY THAT RETURNS A JSON
 
