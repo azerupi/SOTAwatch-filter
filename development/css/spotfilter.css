@@ -53,6 +53,14 @@
 	color: #428bca;
 }
 
+.filter-view .callsign-link{
+	color: black;
+}
+
+.filter-view .callsign-link:hover{
+	color: black;
+}
+
 .filter-view .red{ color: red; }
 .filter-view .orange{ color: #ffbb00; }
 .filter-view .green{ color: #0ec30e; }

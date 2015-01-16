@@ -291,6 +291,16 @@ app.
 		};
 	})
 
+	.filter("stripCallsign", ["$log", function($log){
+
+		return function(callsign){
+
+			callsign = callsign.replace(/\/P/,'');
+			callsign = callsign.replace(/^.+\//,'');
+			return callsign;
+		};
+	}])
+
 
 	.filter('matchSpots', ["$log", "settingsService", "SpotsService", "loggerService", "SoundNotification", function($log, settingsService, SpotsService, loggerService, SoundNotification){
 

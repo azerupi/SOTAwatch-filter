@@ -39,7 +39,7 @@
 						tooltip-placement="{{tooltipPosition}}">
 
 						<td class="column-date">{{ spot.date }}</td>
-						<td class="column-callsign">{{ spot.callsign }}<span class="operator hidden-xs" data-ng-hide="spot.operator === 'Not registered'">( {{ spot.operator }} )</span></td>
+						<td class="column-callsign"><a href="http://www.qrz.com/db/?callsign={{ spot.callsign | stripCallsign }}" class="callsign-link" target="blank">{{ spot.callsign }}</a><span class="operator hidden-xs" data-ng-hide="spot.operator === 'Not registered'">( {{ spot.operator }} )</span></td>
 						<td class="column-summit"><a href="http://sotawatch.org/summits.php?summit={{ spot.summitReference }}" target="_blank">{{ spot.summitReference }}</a></td>
 						<td class="column-points" >
 							<span  class="points" data-ng-show="spot.points" data-ng-class="{ red: spot.points > 7, orange: spot.points > 4 && spot.points < 7, green: spot.points < 5 }">
