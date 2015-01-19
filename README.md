@@ -41,6 +41,14 @@ When you feel you have made substantial improvements, you can (and should :wink:
 
 > **If you just want to take a look at the code it may be easier to just download the .zip file**
 
+
+## License
+
+This software and any derivative work may be redistributed as source code and or in binary form as long as it is NOT for commercial purpose. This includes selling but also making revenue on advertisements, etc.
+
+**For more details read the [license file](LICENSE.md)**
+
+
 --------------------
 
 ![SOTAwatch filter - filter page](/git_info/SOTAwatch_Filter_home.png)
