@@ -5,9 +5,9 @@ app
 		soundNotification = {
 			sounds: [
 				{ name: "Morse: \"SOTA\"", file: "SOTA.mp3" },
-				{ name: "Ding", file: "Ding.wav" },
+				//{ name: "Ding", file: "Ding.wav" },
 				{ name: "Horn", file: "Horn.mp3" },
-				{ name: "Tumtumdim", file: "Tumtumdim.mp3" },
+				//{ name: "Tumtumdim", file: "Tumtumdim.mp3" },
 			],
 			spotsMute: false,
 		};
