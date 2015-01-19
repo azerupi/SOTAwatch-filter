@@ -43,3 +43,7 @@
     top: 50%;
     margin-top: -12px;
 }
+
+.help-view tr{
+    border-bottom: 1px #CCCCCC dashed;
+}

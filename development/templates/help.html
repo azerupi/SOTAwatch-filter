@@ -85,9 +85,29 @@
         </p>
 
         <h5><strong>Examples</strong></h5>
+        
         <table>
-            <tr><td>Test</td><td>Test</td></tr>
-            <tr><td>Test</td><td>Test</td></tr>
+            
+            <tr>
+                <th>Regexp</th>  <th>Filters</th>
+            </tr>
+       
+            <tr>
+                <td> (ON4ABC|ON4DEF|ON4GHI) </td><td>Only ON4ABC or ON4DEF or ON4GHI </td>
+            </tr>
+            <tr>
+                <td>^(DL|DM).*</td><td>Beginning with DL or DM</td>
+            </tr>
+            <tr>
+                <td>^[^NWA].*</td><td>Not beginning with N or W or A</td>
+            </tr>
+            <tr>
+                <td>^F/(AM|AB).*</td><td>Summits: French Alps only</td>
+            </tr>
+            <tr>
+                <td>^EA8.* </td><td>Summits: Canary Islands only</td>
+            </tr>
+            
         </table>
         
         <br>
