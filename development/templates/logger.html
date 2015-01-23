@@ -23,25 +23,25 @@
 
                     <div class="form-group inline" data-ng-class="{'has-error': add_form.callsign.$invalid && ladd_form.callsign.$viewValue.length > 0 }">
 
-                        <label>Callsign*</label><br><input name="callsign" type="text" class="form-control" id="log-callsign" data-ng-model="form.logCallsign" data-ng-pattern="/[\w\/\-]+/" required>
+                        <label>Callsign<span class="red">*</span></label><br><input name="callsign" type="text" class="form-control" id="log-callsign" data-ng-model="form.logCallsign" data-ng-pattern="/[\w\/\-]+/" required>
                     </div>
 
                     <div class="form-group inline" data-ng-class="{'has-error': add_form.summit.$invalid && add_form.summit.$viewValue.length > 0 }">
 
-                        <label>Summit*</label><br><input name="summit" type="text" class="form-control" id="log-summit" data-ng-model="form.logSummit" data-ng-pattern="/[\w\/\-\?]+/" required>
+                        <label>Summit<span class="red">*</span></label><br><input name="summit" type="text" class="form-control" id="log-summit" data-ng-model="form.logSummit" data-ng-pattern="/[\w\/\-\?]+/" required>
                     </div>
 
                     <div class="form-group inline" data-ng-class="{'has-error': add_form.band.$invalid && add_form.band.$viewValue.length > 0 }">
 
-                        <label>Band*</label><br><input name="band" type="text" class="form-control" id="log-band" data-ng-model="form.logBand" data-ng-pattern="/[\d\.]+/" required>
+                        <label>Frequency<span class="red">*</span></label><br><input name="band" type="text" class="form-control" id="log-band" data-ng-model="form.logBand" data-ng-pattern="/[\d\.]+/" required>
                     </div>
 
                     <div class="form-group inline" data-ng-class="{'has-error': add_form.mode.$invalid && add_form.mode.$viewValue.length > 0 }">
 
-                        <label>Mode*</label><br><input name="mode" type="text" class="form-control" id="log-mode" data-ng-model="form.logMode" data-ng-pattern="/\w+/" required>
+                        <label>Mode<span class="red">*</span></label><br><input name="mode" type="text" class="form-control" id="log-mode" data-ng-model="form.logMode" data-ng-pattern="/\w+/" required>
                     </div>
 
-                    <button class="btn btn-primary" type="submit" data-ng-disabled="add_form.$invalid"><span data-ng-show="!form.logEditMode">Add</span><span data-ng-show="form.logEditMode">Edit</span></button>
+                    <button class="btn btn-primary" type="submit" data-ng-disabled="add_form.$invalid"><span data-ng-show="!form.logEditMode">Add</span><span data-ng-show="form.logEditMode">Save</span></button>
                     <br><small class="red">* = required</small>
             </form>
 
