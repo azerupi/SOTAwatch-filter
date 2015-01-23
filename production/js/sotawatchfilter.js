@@ -4257,7 +4257,7 @@ app
         
     })
 
-    .factory('loggerService', function($log,$filter){
+    .factory('loggerService', function($log,$filter, $window){
         
         var log = {};
 
@@ -4360,6 +4360,9 @@ app
             log.sort();
 
             log.save();
+
+            // Google analytics Event
+            $window.ga('send', 'event', 'logger', 'add', "Added a new spot to the log");
         };
 
         log.remove = function(callsign, summit, band, mode){
@@ -4431,6 +4434,10 @@ app
 
             var csv = new Blob([csvString], {type: "text/plain;charset=utf-8"});
             saveAs(csv, "SOTAwatchfilter-log-"+$filter('date')(new Date(), "yyyyMMdd", "UTC")+"-"+$filter('date')(new Date(), "HHmm", "UTC")+".csv");
+
+            // Google analytics Event
+            $window.ga('send', 'event', 'logger', 'download', "Log file was downloaded");
+
         };
 
         log.isInLog = function(callsign, summit){
@@ -4854,7 +4861,7 @@ app
 
 
 
-	.factory('SpotsService', function($timeout, $http, $log, $q, SoundNotification, alertService){
+	.factory('SpotsService', function($timeout, $http, $log, $q, $window, SoundNotification, alertService){
 
 		var spots = {};
 
@@ -4877,6 +4884,10 @@ app
 						spots.spots = spots.processSpots(data.aaData, spots.oldSpots);
 						spots.lastUpdate = new Date();
 						spots.playSound = true;
+
+						// Google analytics Event
+						$window.ga('send', 'event', 'fetch', 'spots');
+
 						$timeout(spots.refresh, 20000 + Math.random() * 5000);
 					})
 					.error(function(resp, status, header, config){
