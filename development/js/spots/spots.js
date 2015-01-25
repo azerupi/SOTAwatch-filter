@@ -1,11 +1,17 @@
 app
 
-	.controller("spotfilterController", function($scope, $window, SpotsService, loggerService, alertService){
+	.controller("spotfilterController", function($scope, $window, SpotsService, loggerService, alertService, settingsService){
 		
 		$scope.spots = SpotsService;
 		$scope.logger = loggerService;
 		$scope.tooltipPosition = ($window.innerWidth > 1050)? "right": "top";
 		$scope.alert = alertService;
+
+		$scope.settings = settingsService;
+
+		$scope.$watch('settings.hideMatched', function() {
+    		$scope.settings.save();
+		});
 
 		angular.element($window).bind('resize', function() {
 	    	$scope.tooltipPosition = ($window.innerWidth > 1050)? "right": "top";

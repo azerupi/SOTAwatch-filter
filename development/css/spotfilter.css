@@ -92,6 +92,12 @@
 	padding-top: 5px;
 }
 
+
+#filterSwitch {
+	margin-right: 15px;
+}
+
+
 @media(min-width: 550px){
 	.filter-view{
 		font-size: 14px;

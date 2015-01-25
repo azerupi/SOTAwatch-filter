@@ -1,4 +1,4 @@
-var app = angular.module("SOTAwatch filter", ['ngRoute', 'ui.bootstrap', 'ngAnimate']);
+var app = angular.module("SOTAwatch filter", ['ngRoute', 'ui.bootstrap', 'ngAnimate', 'uiSwitch']);
 
 app.config(function($routeProvider){
 

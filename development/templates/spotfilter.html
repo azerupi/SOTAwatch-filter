@@ -3,8 +3,7 @@
 	<h1>Spots Filter</h1>
 
 	<p>Last updated at {{ spots.lastUpdate | dateToUTCTime }}</p>
-	<p>Showing {{ filteredSpots.length | pluralize:'spot' }} out of {{ spots.spots.length }}</p>
-
+	<p> <span data-switch id="filterSwitch" name="filterSwitch" data-ng-model="settings.hideMatched" ></span>  Showing {{ filteredSpots.length | pluralize:'spot' }} out of {{ spots.spots.length }} </p>
 
 	<div class="row">
 
