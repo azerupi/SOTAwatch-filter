@@ -184,7 +184,7 @@ app.
 
 				// 				POINTS
 				//
-				else if(spots[index].points <= filterSettings.points){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index].points <= filterSettings.points'); }
+				else if(spots[index].points !== '' && spots[index].points <= filterSettings.points){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index].points <= filterSettings.points'); }
 				
 				//				PRESENT IN LOG
 				//

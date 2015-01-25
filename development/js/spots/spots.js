@@ -93,7 +93,7 @@ app
 					operator: data[index][0],
 					summitName: data[index][1],
 					altitude: data[index][2],
-					points: parseInt(data[index][3], 10),
+					points:  data[index][3] !== ''? parseInt(data[index][3], 10) : '',
 					date: data[index][4],
 					callsign: data[index][5],
 					summitReference: data[index][6],
