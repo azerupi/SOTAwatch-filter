@@ -38,27 +38,14 @@ app
                 spots = $filter('matchSpots')(spots);
 
                 for(var index in spots){
-                                        
-                    
-                    //
-                    //      APPLY THE VALUES TO THE PROPERTIES DEPENDING ON THE SETTINGS
-                    //
 
-                    if(spots[index].match && spots[index].isNew){
+                    if(spots[index].isNew && spots[index].match){
 
                         objectSpots.numberOfNewSpots++;
-                        // Play sound
-                        $log.debug("playSound property is");
-                        $log.debug(objectSpots.playSound);
-                        if(objectSpots.playSound && spots[index].isNew){
-                            $log.debug("Play Sound !");
-                            soundNotification.playSpots();
-                            objectSpots.playSound = false;
-                        }
                     }
                     
                 }
-                //*/
+                
 
                 objectSpots.newSpots = false;
 

@@ -1,6 +1,6 @@
 app
 
-	.factory("SoundNotification", function($log){
+	.factory("SoundNotification", function($log, $filter){
 
 		soundNotification = {
 			sounds: [
@@ -43,9 +43,25 @@ app
 			$log.debug(soundNotification.spotsMute);
 		};
 
-		soundNotification.playSpots = function(){
+		soundNotification.playSpots = function(spots){
+
+			$log.debug("PlaySpots:");
 			if(!soundNotification.spotsMute){
-				soundNotification.audioSpots.play();
+				$log.debug("Notifications not muted");
+
+				spotlist = $filter('matchSpots')(spots);
+				
+				$log.debug(spotlist[0].isNew);
+				for(var index in spotlist){
+					if(spotlist[index].isNew){
+						if(spotlist[index].match){
+							soundNotification.audioSpots.play();
+						}
+					}
+					else{
+						break;
+					}
+				}
 			}
 		};
 

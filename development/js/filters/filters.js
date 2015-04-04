@@ -36,9 +36,9 @@ function inBand(frequency, band){
 }
 
 function giveBand(frequency){
-	console.log(frequency);
+	
 	for(var key in bandFrequencyRange){
-		console.log(key);
+		
 		if(frequency > bandFrequencyRange[key][0] && frequency < bandFrequencyRange[key][1]){
 			return parseInt(bandFrequencyRange[key][0]);
 		}
@@ -125,7 +125,7 @@ app.
 			logger = loggerService;
 
 			
-			$log.debug("Entered filter: filterSpots");
+			//$log.debug("Entered filter: filterSpots");
 
 			
 
@@ -242,7 +242,7 @@ app.
 			//*/
 			
 
-			$log.debug(spots);
+			//$log.debug(spots);
 
 			return spots;
 		};

@@ -40,6 +40,7 @@ app
 			var requestTimeout = $q.defer();
 			var requestStartTime = new Date().getTime();
 			try{
+				// 
 				$http.get("http://www.on6zq.be/cgi-bin/SOTAspots2Json.cgi", { timeout: requestTimeout.promise })
 					.success(function(data){
 						spots.oldSpots = spots.spots;
@@ -108,13 +109,13 @@ app
 				// increment id
 				id++;
 
-				$log.debug("Compare last old vs new spots");
-				$log.debug(oldSpots[0]);
-				$log.debug(spotsProcessed[spotsProcessed.length - 1]);
+				//$log.debug("Compare last old vs new spots");
+				//$log.debug(oldSpots[0]);
+				//$log.debug(spotsProcessed[spotsProcessed.length - 1]);
 
 				if(isNewSpot && oldSpots.length > 0){
 
-					if( oldSpots[0].date !== spotsProcessed[spotsProcessed.length - 1].date  &&  oldSpots[0].callsign !== spotsProcessed[spotsProcessed.length - 1].callsign && oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency ){
+					if( oldSpots[0].date !== spotsProcessed[spotsProcessed.length - 1].date  ||  oldSpots[0].callsign !== spotsProcessed[spotsProcessed.length - 1].callsign || oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency ){
 						spotsProcessed[spotsProcessed.length - 1].isNew = true;
 						spots.newSpots = true;
 					}
@@ -125,6 +126,8 @@ app
 				}
 				
 			}
+
+			SoundNotification.playSpots(spotsProcessed);
 
 			return spotsProcessed;
 		};

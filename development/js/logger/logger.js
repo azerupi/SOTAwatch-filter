@@ -193,9 +193,13 @@ app
 
         log.isInLog = function(callsign, summit){
             for(var i in log.loglist){
-                if(log.loglist[i].callsign == callsign && log.loglist[i].summit == summit){return true;}
+                if(log.stripP(log.loglist[i].callsign) == log.stripP(callsign) && log.loglist[i].summit == summit){return true;}
             }
             return false;
+        };
+
+        log.stripP = function(callsign){
+            return callsign.replace(/\/P$/,'');
         };
 
 

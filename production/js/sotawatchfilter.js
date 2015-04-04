@@ -116,7 +116,7 @@ app.
     });
 app
 
-	.factory("SoundNotification", function($log){
+	.factory("SoundNotification", function($log, $filter){
 
 		soundNotification = {
 			sounds: [
@@ -159,9 +159,25 @@ app
 			$log.debug(soundNotification.spotsMute);
 		};
 
-		soundNotification.playSpots = function(){
+		soundNotification.playSpots = function(spots){
+
+			$log.debug("PlaySpots:");
 			if(!soundNotification.spotsMute){
-				soundNotification.audioSpots.play();
+				$log.debug("Notifications not muted");
+
+				spotlist = $filter('matchSpots')(spots);
+				
+				$log.debug(spotlist[0].isNew);
+				for(var index in spotlist){
+					if(spotlist[index].isNew){
+						if(spotlist[index].match){
+							soundNotification.audioSpots.play();
+						}
+					}
+					else{
+						break;
+					}
+				}
 			}
 		};
 
@@ -252,9 +268,9 @@ function inBand(frequency, band){
 }
 
 function giveBand(frequency){
-	console.log(frequency);
+	
 	for(var key in bandFrequencyRange){
-		console.log(key);
+		
 		if(frequency > bandFrequencyRange[key][0] && frequency < bandFrequencyRange[key][1]){
 			return parseInt(bandFrequencyRange[key][0]);
 		}
@@ -341,7 +357,7 @@ app.
 			logger = loggerService;
 
 			
-			$log.debug("Entered filter: filterSpots");
+			//$log.debug("Entered filter: filterSpots");
 
 			
 
@@ -458,7 +474,7 @@ app.
 			//*/
 			
 
-			$log.debug(spots);
+			//$log.debug(spots);
 
 			return spots;
 		};
@@ -4471,9 +4487,13 @@ app
 
         log.isInLog = function(callsign, summit){
             for(var i in log.loglist){
-                if(log.loglist[i].callsign == callsign && log.loglist[i].summit == summit){return true;}
+                if(log.stripP(log.loglist[i].callsign) == log.stripP(callsign) && log.loglist[i].summit == summit){return true;}
             }
             return false;
+        };
+
+        log.stripP = function(callsign){
+            return callsign.replace(/\/P$/,'');
         };
 
 
@@ -4519,27 +4539,14 @@ app
                 spots = $filter('matchSpots')(spots);
 
                 for(var index in spots){
-                                        
-                    
-                    //
-                    //      APPLY THE VALUES TO THE PROPERTIES DEPENDING ON THE SETTINGS
-                    //
 
-                    if(spots[index].match && spots[index].isNew){
+                    if(spots[index].isNew && spots[index].match){
 
                         objectSpots.numberOfNewSpots++;
-                        // Play sound
-                        $log.debug("playSound property is");
-                        $log.debug(objectSpots.playSound);
-                        if(objectSpots.playSound && spots[index].isNew){
-                            $log.debug("Play Sound !");
-                            soundNotification.playSpots();
-                            objectSpots.playSound = false;
-                        }
                     }
                     
                 }
-                //*/
+                
 
                 objectSpots.newSpots = false;
 
@@ -4913,6 +4920,7 @@ app
 			var requestTimeout = $q.defer();
 			var requestStartTime = new Date().getTime();
 			try{
+				// 
 				$http.get("http://www.on6zq.be/cgi-bin/SOTAspots2Json.cgi", { timeout: requestTimeout.promise })
 					.success(function(data){
 						spots.oldSpots = spots.spots;
@@ -4981,13 +4989,13 @@ app
 				// increment id
 				id++;
 
-				$log.debug("Compare last old vs new spots");
-				$log.debug(oldSpots[0]);
-				$log.debug(spotsProcessed[spotsProcessed.length - 1]);
+				//$log.debug("Compare last old vs new spots");
+				//$log.debug(oldSpots[0]);
+				//$log.debug(spotsProcessed[spotsProcessed.length - 1]);
 
 				if(isNewSpot && oldSpots.length > 0){
 
-					if( oldSpots[0].date !== spotsProcessed[spotsProcessed.length - 1].date  &&  oldSpots[0].callsign !== spotsProcessed[spotsProcessed.length - 1].callsign && oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency ){
+					if( oldSpots[0].date !== spotsProcessed[spotsProcessed.length - 1].date  ||  oldSpots[0].callsign !== spotsProcessed[spotsProcessed.length - 1].callsign || oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency ){
 						spotsProcessed[spotsProcessed.length - 1].isNew = true;
 						spots.newSpots = true;
 					}
@@ -4998,6 +5006,8 @@ app
 				}
 				
 			}
+
+			SoundNotification.playSpots(spotsProcessed);
 
 			return spotsProcessed;
 		};
