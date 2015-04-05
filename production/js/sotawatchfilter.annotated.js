@@ -167,7 +167,6 @@ app
 
 				spotlist = $filter('matchSpots')(spots);
 				
-				$log.debug(spotlist[0].isNew);
 				for(var index in spotlist){
 					if(spotlist[index].isNew){
 						if(spotlist[index].match){
@@ -4911,6 +4910,7 @@ app
 
 		spots.numberOfNewSpots = 0;
 		spots.newSpots = false;
+		spots.firstLoad = true;
 
 		alert = alertService;
 		// FETCH THE SPOTS VIA THE PROXY THAT RETURNS A JSON
@@ -4920,8 +4920,8 @@ app
 			var requestTimeout = $q.defer();
 			var requestStartTime = new Date().getTime();
 			try{
-				// 
-				$http.get("http://www.on6zq.be/cgi-bin/SOTAspots2Json.cgi", { timeout: requestTimeout.promise })
+				// $http.get("SOTAspots2Json.json", { timeout: requestTimeout.promise }) /*
+				$http.get("http://www.on6zq.be/cgi-bin/SOTAspots2Json.cgi", { timeout: requestTimeout.promise }) //*/
 					.success(function(data){
 						spots.oldSpots = spots.spots;
 						spots.spots = spots.processSpots(data.aaData, spots.oldSpots);
@@ -4977,6 +4977,7 @@ app
 					points:  data[index][3] !== ''? parseInt(data[index][3], 10) : '',
 					date: data[index][4],
 					callsign: data[index][5],
+					callsign_without_p: data[index][5].replace(/\/P$/,''),
 					summitReference: data[index][6],
 					frequency: parseFloat(data[index][7]),
 					frequencyString: data[index][7],
@@ -4989,13 +4990,13 @@ app
 				// increment id
 				id++;
 
-				//$log.debug("Compare last old vs new spots");
-				//$log.debug(oldSpots[0]);
-				//$log.debug(spotsProcessed[spotsProcessed.length - 1]);
 
 				if(isNewSpot && oldSpots.length > 0){
 
-					if( oldSpots[0].date !== spotsProcessed[spotsProcessed.length - 1].date  ||  oldSpots[0].callsign !== spotsProcessed[spotsProcessed.length - 1].callsign || oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency ){
+					if( oldSpots[0].summitReference !== spotsProcessed[spotsProcessed.length - 1].summitReference  ||  
+						oldSpots[0].callsign_without_p !== spotsProcessed[spotsProcessed.length - 1].callsign_without_p || 
+						oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency )
+					{
 						spotsProcessed[spotsProcessed.length - 1].isNew = true;
 						spots.newSpots = true;
 					}
@@ -5004,8 +5005,13 @@ app
 						isNewSpot = false;
 					}
 				}
+				else if(oldSpots.length === 0 && !spots.firstLoad){
+					spotsProcessed[spotsProcessed.length - 1].isNew = true;
+				}
 				
 			}
+
+			spots.firstLoad = false;
 
 			SoundNotification.playSpots(spotsProcessed);
 

@@ -51,7 +51,6 @@ app
 
 				spotlist = $filter('matchSpots')(spots);
 				
-				$log.debug(spotlist[0].isNew);
 				for(var index in spotlist){
 					if(spotlist[index].isNew){
 						if(spotlist[index].match){
