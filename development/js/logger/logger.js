@@ -41,7 +41,7 @@ app
                         var elements = splitted[i].split(";");
 
                         log.loglist.push({callsign: elements[0], summit: elements[1], band: elements[2], mode: elements[3],
-                                    date: elements[4], time: elements[5]});
+                                    date: elements[4], time: elements[5], callsign_without_p: elements[6]});
                     }
                 }
 
@@ -70,7 +70,8 @@ app
                                         log.loglist[index].band+";"+
                                         log.loglist[index].mode+";"+
                                         log.loglist[index].date+";"+
-                                        log.loglist[index].time+"\n";
+                                        log.loglist[index].time+";"+
+                                        log.loglist[index].callsign_without_p+"\n";
                 }
 
 
@@ -97,6 +98,7 @@ app
 
             //remove special characters
             callsign = callsign.replace(/[^\w\d\/\-]/gi, '');
+            callsign_without_p = callsign.replace(/\/P$/,'');
             summit = summit.replace(/[^\w\d\/\-\?]/gi, '');
             band = band.replace(/[^\.\d]/gi, '');
             mode = mode.replace(/[^\w]/gi, '');
@@ -106,7 +108,7 @@ app
             // Verify for doubles
 
             // Add to array
-            log.loglist.push({date: date, callsign: callsign, summit: summit, time: time, band: band, mode: mode});
+            log.loglist.push({date: date, callsign: callsign, callsign_without_p: callsign_without_p, summit: summit, time: time, band: band, mode: mode});
 
             log.sort();
 
@@ -193,15 +195,10 @@ app
 
         log.isInLog = function(callsign, summit){
             for(var i in log.loglist){
-                if(log.stripP(log.loglist[i].callsign) == log.stripP(callsign) && log.loglist[i].summit == summit){return true;}
+                if(log.loglist[i].callsign_without_p == callsign && log.loglist[i].summit == summit){return true;}
             }
             return false;
         };
-
-        log.stripP = function(callsign){
-            return callsign.replace(/\/P$/,'');
-        };
-
 
         return log;
     });

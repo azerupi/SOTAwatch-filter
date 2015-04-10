@@ -419,7 +419,7 @@ app.
 				
 				//				PRESENT IN LOG
 				//
-				else if(logger.isInLog(spots[index].callsign, spots[index].summitReference) && filterSettings.hideLog){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index] appears in the log');}
+				else if(logger.isInLog(spots[index].callsign_without_p, spots[index].summitReference) && filterSettings.hideLog){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index] appears in the log');}
 
 				// IN ALL OTHER CASES THE SPOT DOES MATCH
 				else{
@@ -4334,7 +4334,7 @@ app
                         var elements = splitted[i].split(";");
 
                         log.loglist.push({callsign: elements[0], summit: elements[1], band: elements[2], mode: elements[3],
-                                    date: elements[4], time: elements[5]});
+                                    date: elements[4], time: elements[5], callsign_without_p: elements[6]});
                     }
                 }
 
@@ -4363,7 +4363,8 @@ app
                                         log.loglist[index].band+";"+
                                         log.loglist[index].mode+";"+
                                         log.loglist[index].date+";"+
-                                        log.loglist[index].time+"\n";
+                                        log.loglist[index].time+";"+
+                                        log.loglist[index].callsign_without_p+"\n";
                 }
 
 
@@ -4390,6 +4391,7 @@ app
 
             //remove special characters
             callsign = callsign.replace(/[^\w\d\/\-]/gi, '');
+            callsign_without_p = callsign.replace(/\/P$/,'');
             summit = summit.replace(/[^\w\d\/\-\?]/gi, '');
             band = band.replace(/[^\.\d]/gi, '');
             mode = mode.replace(/[^\w]/gi, '');
@@ -4399,7 +4401,7 @@ app
             // Verify for doubles
 
             // Add to array
-            log.loglist.push({date: date, callsign: callsign, summit: summit, time: time, band: band, mode: mode});
+            log.loglist.push({date: date, callsign: callsign, callsign_without_p: callsign_without_p, summit: summit, time: time, band: band, mode: mode});
 
             log.sort();
 
@@ -4486,15 +4488,10 @@ app
 
         log.isInLog = function(callsign, summit){
             for(var i in log.loglist){
-                if(log.stripP(log.loglist[i].callsign) == log.stripP(callsign) && log.loglist[i].summit == summit){return true;}
+                if(log.loglist[i].callsign_without_p == callsign && log.loglist[i].summit == summit){return true;}
             }
             return false;
         };
-
-        log.stripP = function(callsign){
-            return callsign.replace(/\/P$/,'');
-        };
-
 
         return log;
     }]);
@@ -5043,7 +5040,7 @@ app
 					spots.spots[i].activeHover = true;
 					spots.spots[i].passiveHover = false;
 				}
-				else if(spots.spotHovered !== null && spots.spots[i].callsign === spots.spots[spots.spotHovered].callsign){
+				else if(spots.spotHovered !== null && spots.spots[i].callsign_without_p === spots.spots[spots.spotHovered].callsign_without_p){
 					spots.spots[i].activeHover = false;
 					spots.spots[i].passiveHover = true;
 				}

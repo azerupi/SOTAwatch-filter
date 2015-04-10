@@ -164,7 +164,7 @@ app
 					spots.spots[i].activeHover = true;
 					spots.spots[i].passiveHover = false;
 				}
-				else if(spots.spotHovered !== null && spots.spots[i].callsign === spots.spots[spots.spotHovered].callsign){
+				else if(spots.spotHovered !== null && spots.spots[i].callsign_without_p === spots.spots[spots.spotHovered].callsign_without_p){
 					spots.spots[i].activeHover = false;
 					spots.spots[i].passiveHover = true;
 				}

@@ -188,7 +188,7 @@ app.
 				
 				//				PRESENT IN LOG
 				//
-				else if(logger.isInLog(spots[index].callsign, spots[index].summitReference) && filterSettings.hideLog){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index] appears in the log');}
+				else if(logger.isInLog(spots[index].callsign_without_p, spots[index].summitReference) && filterSettings.hideLog){ spots[index].match = false; $log.debug("Spot does not match: "+'spots[index] appears in the log');}
 
 				// IN ALL OTHER CASES THE SPOT DOES MATCH
 				else{
