@@ -44,7 +44,7 @@ When you feel you have made substantial improvements, you can (and should :wink:
 
 ## License
 
-This software and any derivative work may be redistributed as source code and or in binary form as long as it is NOT for commercial purpose. This includes selling but also making revenue on advertisements, etc.
+The source code for this project is released under the [MPL (Mozilla Public License) v2.0](https://www.mozilla.org/MPL/2.0/)
 
 **For more details read the [license file](LICENSE.md)**
 
