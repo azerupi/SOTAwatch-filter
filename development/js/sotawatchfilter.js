@@ -59,7 +59,7 @@ app.config(function($routeProvider){
  					$log.debug("Google Analytics Page View");
                 	if (!$window.ga)
                     	return;
- 					
+
                 	$window.ga('send', 'pageview', { page: document.location.pathname + document.location.search + document.location.hash });
         		}
         	);
@@ -70,4 +70,3 @@ app.config(function($routeProvider){
 		$scope.alerts = alertService;
 
 	});
-

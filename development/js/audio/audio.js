@@ -24,8 +24,6 @@ app
 		if(soundNotification.localStorageIsSupported){
 			soundNotification.selectedSoundSpots = soundNotification.sounds[soundNotification.sounds.map(function(x) {return x.name; }).indexOf(localStorage.getItem("selectedSoundSpots"))];
 			soundNotification.spotsMute = (localStorage.getItem("spotsMute") === "true")? true : false;
-			$log.debug(localStorage.getItem("spotsMute"));
-			$log.debug(soundNotification.spotsMute);
 		}
 
 		soundNotification.selectedSoundSpots = soundNotification.selectedSoundSpots || soundNotification.sounds[0];
@@ -44,20 +42,14 @@ app
 		};
 
 		soundNotification.playSpots = function(spots){
-
-			$log.debug("PlaySpots:");
 			if(!soundNotification.spotsMute){
-				$log.debug("Notifications not muted");
 
 				spotlist = $filter('matchSpots')(spots);
-				
+
 				for(var index in spotlist){
-					if(spotlist[index].isNew){
-						if(spotlist[index].match){
-							soundNotification.audioSpots.play();
-						}
-					}
-					else{
+					if(spotlist[index].isNew && spotlist[index].match){
+						$log.log("Alarm triggered by: " + spotlist[index].callsign + " on " + spotlist[index].summitReference);
+						soundNotification.audioSpots.play();
 						break;
 					}
 				}

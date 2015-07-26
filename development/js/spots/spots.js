@@ -1,7 +1,7 @@
 app
 
 	.controller("spotfilterController", function($scope, $window, SpotsService, loggerService, alertService, settingsService){
-		
+
 		$scope.spots = SpotsService;
 		$scope.logger = loggerService;
 		$scope.tooltipPosition = ($window.innerWidth > 1050)? "right": "top";
@@ -37,7 +37,7 @@ app
 		// FETCH THE SPOTS VIA THE PROXY THAT RETURNS A JSON
 
 		spots.refresh = function(){
-			
+
 			var requestTimeout = $q.defer();
 			var requestStartTime = new Date().getTime();
 			try{
@@ -45,9 +45,46 @@ app
 				$http.get("http://www.on6zq.be/cgi-bin/SOTAspots2Json.cgi", { timeout: requestTimeout.promise }) //*/
 					.success(function(data){
 						spots.oldSpots = spots.spots;
-						spots.spots = spots.processSpots(data.aaData, spots.oldSpots);
+						spots.stringSpots = [];
+
+						for (var index in spots.oldSpots) {
+							spots.stringSpots.push(spots.oldSpots[index].toString());
+						}
+
+						spots.stringSpots.sort();
+
+						spots.stringSpots.is = function binaryIndexOf(searchElement) {
+							//$log.debug(this);
+						    var minIndex = 0;
+						    var maxIndex = this.length - 1;
+						    var currentIndex;
+						    var currentElement;
+
+						    while (minIndex <= maxIndex) {
+						        currentIndex = (minIndex + maxIndex) / 2 | 0;
+						        currentElement = this[currentIndex];
+
+						        if (currentElement < searchElement) {
+						            minIndex = currentIndex + 1;
+						        }
+						        else if (currentElement > searchElement) {
+						            maxIndex = currentIndex - 1;
+						        }
+						        else {
+									if(maxIndex < 0 || minIndex < 0){
+										$log.error("Index can be less than 0");
+									}
+						            return true;
+						        }
+						    }
+
+							//$log.log(searchElement + " not found");
+						    return false;
+						};
+
+						//$log.log("-------------------------------------------------------");
+						spots.processSpots(data.aaData);
 						spots.lastUpdate = new Date();
-						spots.playSound = true;
 
 						// Google analytics Event
 						$window.ga('send', 'event', 'fetch', 'spots');
@@ -62,12 +99,12 @@ app
 				        if(respTime >= config.timeout){
 				            //time out handeling
 				            alert.addAlert("SOTAwatch filter could not reach the server, trying again in a few seconds", "warning", 8000);
-				        } 
+				        }
 				        else{
 				            //other error hanndling
 				            $log.error("Not a timeout error: ");
 				        }
-						
+
 						$timeout(spots.refresh, 10000 + Math.random() * 5000);
 					});
 				}
@@ -85,12 +122,12 @@ app
 
 		spots.processSpots = function(data, oldSpots){
 
-			var spotsProcessed = [],
-				isNewSpot = true,
-				id = 0;
+			this.spots = [];
+			var id = 0;
 
 			for(var index in data){
-				spotsProcessed.push({
+
+				this.spots.push({
 					index: id,
 					operator: data[index][0],
 					summitName: data[index][1],
@@ -106,37 +143,34 @@ app
 					comment: data[index][9],
 					postedBy: data[index][10],
 					isNew: false, // Default value to be able to compare the objects
+					toString: function() {
+						return this.summitReference + ";" + this.callsign_without_p + ";" + this.frequency;
+					},
 				});
 
 				// increment id
 				id++;
 
+				if(this.oldSpots.length > 0){
 
-				if(isNewSpot && oldSpots.length > 0){
-
-					if( oldSpots[0].summitReference !== spotsProcessed[spotsProcessed.length - 1].summitReference  ||  
-						oldSpots[0].callsign_without_p !== spotsProcessed[spotsProcessed.length - 1].callsign_without_p || 
-						oldSpots[0].frequency !== spotsProcessed[spotsProcessed.length - 1].frequency )
+					if(!this.stringSpots.is(this.spots[this.spots.length - 1].toString()))
 					{
-						spotsProcessed[spotsProcessed.length - 1].isNew = true;
-						spots.newSpots = true;
+						this.spots[this.spots.length - 1].isNew = true;
+						this.newSpots = true;
 					}
 					else{
-						spotsProcessed[spotsProcessed.length - 1].isNew = false;
-						isNewSpot = false;
+						this.spots[this.spots.length - 1].isNew = false;
 					}
 				}
-				else if(oldSpots.length === 0 && !spots.firstLoad){
-					spotsProcessed[spotsProcessed.length - 1].isNew = true;
+				else if(this.oldSpots.length === 0 && !this.firstLoad){
+					this.spots[this.spots.length - 1].isNew = true;
 				}
-				
+
 			}
 
-			spots.firstLoad = false;
+			this.firstLoad = false;
 
-			SoundNotification.playSpots(spotsProcessed);
-
-			return spotsProcessed;
+			SoundNotification.playSpots(this.spots);
 		};
 
 
@@ -158,7 +192,7 @@ app
 				spots.spotHovered = null;
 			}
 
-			
+
 			for (var i in spots.spots){
 				if(i === spots.spotHovered){
 					spots.spots[i].activeHover = true;
@@ -173,7 +207,7 @@ app
 					spots.spots[i].passiveHover = false;
 				}
 			}
-			
+
 		};
 
 
@@ -182,16 +216,3 @@ app
 
 		return spots;
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-

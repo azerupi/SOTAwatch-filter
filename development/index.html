@@ -7,19 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<!-- Optional theme -->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style.min.css">
 
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
             ga('create', 'UA-53232126-1', 'auto');
             ga('require', 'displayfeatures');
@@ -30,11 +30,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
 	</head>
 	<body>
-		
+
 		<div id="wrapper" data-ng-controller="AppController" data-ng-class="{toggled: !sidebarToggled}">
 
             <!-- #sidebar-wrapper -->
-        
+
             <div id="sidebar-wrapper" data-ng-controller="sidebarController">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
@@ -50,14 +50,14 @@
                             <!--<span class="glyphicon glyphicon-cog sidebar-icon-right" data-md-url="spotfilter-settings" data-ng-click="$parent.sidebarToggled = true"></span>-->
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="#/logger" data-ng-click="$parent.sidebarToggled = true"><span class="glyphicon glyphicon-edit sidebar-icon"></span>Logger
 
                         <!--<span class="glyphicon glyphicon-cog sidebar-icon-right" data-md-url="logger-settings" data-ng-click="$parent.sidebarToggled = true"></span>-->
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="#/settings" data-ng-click="$parent.sidebarToggled = true"><span class="glyphicon glyphicon-cog sidebar-icon"></span>Settings</a>
                     </li>
@@ -68,20 +68,20 @@
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
-    
+
             <!-- #page-contendiv-wrapper -->
-    
+
             <div id="page-content-wrapper">
                 <div class="visible-xs-block"><button class="btn sidebar-grey" data-ng-click="sidebarToggled = !sidebarToggled"><i class="fa fa-bars"></i></button></div>
-                
+
                 <div data-alert data-ng-repeat="alert in alerts.alerts" data-type="{{alert.cssClass}}" data-close="alerts.removeAlert(alert.id)" class="alert-fade alert alert-warning" >{{alert.message}}</div>
 
                 <div data-ng-view></div>
             </div>
-    
+
             <!-- /#page-content-wrapper -->
         </div>
-		
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-route.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-animate.js"></script>
